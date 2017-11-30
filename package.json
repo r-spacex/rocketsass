@@ -4,14 +4,14 @@
   "description": "A smart sass compiler",
   "main": "index.js",
   "bin": {
-    "rocketsass": "./index.js"
+    "rocketsass": "./bin/rocketsass.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/r-spacex/smartsass.git"
+    "url": "git+https://github.com/r-spacex/rocketsass.git"
   },
   "keywords": [
     "sass",
@@ -20,9 +20,9 @@
   "author": "Richik SC",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/r-spacex/smartsass/issues"
+    "url": "https://github.com/r-spacex/rocketsass/issues"
   },
-  "homepage": "https://github.com/r-spacex/smartsass#readme",
+  "homepage": "https://github.com/r-spacex/rocketsass#readme",
   "dependencies": {
     "commander": "^2.12.2"
   }
