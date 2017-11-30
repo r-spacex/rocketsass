@@ -11,7 +11,7 @@ module.exports = {
   /**
    * Enum for Sass compilation output styles.
    * @readonly
-   * @enum {OutputStyle}
+   * @enum {OutputStyle} 
    */
   OutputStyle: {
     /** Sass's nested output style (the default) */
@@ -113,6 +113,12 @@ module.exports = {
         this.getAllConfigs(path, fileList, (configs) => {
           console.log(`Compiling sass with ${options.style} style...`);
           configs.forEach((config) => {
+            // Skip files without compileDest
+            if (typeof config.compileDest == undefined) {
+              console.error(`File ${config.target} does not include compileDest, skipping...`);
+              return;
+            }
+
             let outputStyle = config.style || defaultStyle;
             exec(`sass ${config.target} ${config.compileDest} --style ${outputStyle}`, (err, stdout, stderr) => {
               if(err) throw err;
