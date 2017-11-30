@@ -1,10 +1,10 @@
 {
-  "name": "smartsass",
+  "name": "rocketsass",
   "version": "0.0.1",
   "description": "A smart sass compiler",
   "main": "index.js",
   "bin": {
-    "smartsass": "./index.js"
+    "rocketsass": "./index.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
