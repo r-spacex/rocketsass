@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/r-spacex/smartsass/issues"
   },
-  "homepage": "https://github.com/r-spacex/smartsass#readme"
+  "homepage": "https://github.com/r-spacex/smartsass#readme",
+  "dependencies": {
+    "commander": "^2.12.2"
+  }
 }
