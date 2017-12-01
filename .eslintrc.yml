@@ -4,3 +4,4 @@ env:
   node: true
 rules:
   linebreak-style: off
+  no-console: off

@@ -3,6 +3,7 @@
 const program = require('commander');
 const pkg = require('../package.json');
 const rocketsass = require('../');
+const colors = require('colors');
 
 let pathValue = './css/scss/';
 
@@ -17,11 +18,12 @@ program
 
 program.parse(process.argv);
 
-let ignorePrefixVal = program.ignore || '_';
-let styleVal = program.style || rocketsass.OutputStyle.NESTED;
-
-
-rocketsass.compile(pathValue, {
-  ignorePrefix: ignorePrefixVal,
-  style: styleVal
-});
+try {
+  rocketsass.compile(pathValue, {
+    ignorePrefix: program.ignore || '_',
+    style: program.style || rocketsass.OutputStyle.NESTED,
+  });
+} catch (error) {
+  console.error(colors.red(error));
+  process.exit(1);
+}
