@@ -1,4 +1,7 @@
 # RocketSass
+[![npm](https://img.shields.io/npm/v/rocketsass.svg)](https://www.npmjs.com/package/rocketsass)
+[![Inline docs](http://inch-ci.org/github/r-spacex/rocketsass.svg?branch=master)](http://inch-ci.org/github/r-spacex/rocketsass)
+
 A smart Sass compiler that compiles each file to a specific target destination.
 
 ## Installation
