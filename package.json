@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/r-spacex/rocketsass#readme",
   "dependencies": {
+    "colors": "^1.1.2",
     "commander": "^2.12.2"
   }
 }

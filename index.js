@@ -1,6 +1,7 @@
 const fs = require('fs');
 const eol = require('os').EOL;
 const { exec } = require('child_process');
+const colors = require('colors');
 
 
 /**
@@ -11,7 +12,7 @@ module.exports = {
   /**
    * Enum for Sass compilation output styles.
    * @readonly
-   * @enum {OutputStyle} 
+   * @enum {OutputStyle}
    */
   OutputStyle: {
     /** Sass's nested output style (the default) */
@@ -114,8 +115,8 @@ module.exports = {
           console.log(`Compiling sass with ${options.style} style...`);
           configs.forEach((config) => {
             // Skip files without compileDest
-            if (typeof config.compileDest == undefined) {
-              console.error(`File ${config.target} does not include compileDest, skipping...`);
+            if (typeof config.compileDest == 'undefined') {
+              console.error(`File '${config.target}' does not include compileDest, skipping...`.red);
               return;
             }
 
