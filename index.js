@@ -1,8 +1,12 @@
 const fs = require('fs');
 const eol = require('os').EOL;
+const syspath = require('path');
 const { exec } = require('child_process');
 require('colors');
 
+function relativePath(path) {
+  return syspath.relative(process.cwd(), path);
+}
 
 /**
  * A smart sass compiler
@@ -35,11 +39,10 @@ module.exports = {
       if (err) { callback(err, null); return; }
 
       // Read comment
-      const firstComment = data.toString().split('*/')[0].slice(2);
+      const firstComment = data.toString().split('*/')[0];
       if (firstComment.startsWith('/*')) {
         // First line is a comment
-        const configString = firstComment.replace(eol, '').trim(); // Slice out comment markers
-        console.log(configString);
+        const configString = firstComment.slice(2).replace(eol, '').trim(); // Slice out comment marker
         const configItems = configString.split(','); // Split into array of items, denotated by commas
 
         // Convert config comment to configuration object
@@ -50,17 +53,18 @@ module.exports = {
           if (pair.length === 2) {
             const key = pair[0].trim();
             const value = pair[1].trim();
-            if (!isNaN(value)) {
+            if (!Number.isNaN(Number(value))) {
               config[key] = Number(value);
             } else {
-              config[key] = value;
+              // Resolve booleans
+              config[key] = value === 'true' || (value === 'false' ? false : value);
             }
           }
         });
         callback(null, config);
         return;
       }
-      callback(new Error('First line is not a block-style comment'), null);
+      callback(new Error(`First line in ${filepath} is not a block-style comment`), null);
     });
   },
 
@@ -118,11 +122,16 @@ module.exports = {
             return;
           }
 
+          let destination = config.compileDest;
+          if (config.relativePath) {
+            destination = syspath.resolve(syspath.dirname(config.target), config.compileDest);
+          }
+
           const outputStyle = config.style || defaultStyle;
-          exec(`sass ${config.target} ${config.compileDest} --style ${outputStyle}`, (execErr) => {
+          exec(`sass ${config.target} ${destination} --style ${outputStyle}`, (execErr) => {
             if (execErr) throw execErr;
-            const styleClause = (outputStyle === defaultStyle) ? '' : ` with ${outputStyle} style`;
-            console.log(`${config.target} -> ${config.compileDest}${styleClause}`);
+            const styleClause = (outputStyle === defaultStyle) ? '' : ` with ${outputStyle} style`.green;
+            console.log(`${relativePath(config.target)} ${'->'.cyan} ${relativePath(destination)}${styleClause}`);
           });
         });
       });
