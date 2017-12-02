@@ -1,0 +1,159 @@
+/* compileDest = ./test/cases/out/launch-timeline-app/launch-timeline-app.css  */
+
+// Basics Patterns and colors
+@import "_ignored";
+
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  margin: 0 auto;
+  max-height: 100vh;
+  overflow-y: hidden;
+  padding: 0 16px;
+  width: auto;
+  white-space:nowrap;
+}
+
+#elon{
+    box-sizing: border-box;
+    border-radius: 16px;
+    color: #444;
+    display: block;
+    height: 100vh;
+    min-width: 150px;
+    max-width: 150px;
+    padding: 16px;
+    position: relative;
+    text-align: center;
+
+    img{
+      bottom: 18vh;
+      max-height: 15px;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    p{
+      bottom: 11vh;
+      height: 4vh;
+      position: absolute;
+      width: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+}
+
+#timeline{
+  bottom: 3vh;
+  @include thin-border(bottom, solid, $spacex-blue);
+  position: absolute;
+  width: 100%;
+  z-index: 10;
+
+  &:before{
+    content: "Timeline";
+    left: 0;
+    position: absolute;
+    top: -20px;
+  }
+}
+
+.scroll-area {
+  align-items: flex-end;
+  display: flex;
+  flex-wrap: nowrap;
+  height: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  -webkit-overflow-scrolling: touch; //iOS Momentum Scrolling
+
+  .altitude-line{
+    @include thin-border(bottom, solid, $spacex-blue);
+    position: absolute;
+    width: 150px;
+    z-index: 10;
+
+    &:before{
+      left: 0;
+      position: absolute;
+      top: -20px;
+    }
+
+    &:after{
+      left: 0;
+      position: absolute;
+      top: 4px;
+    }
+
+    &#gto{
+      top: 10%;
+
+      &:before{
+        content: "Geostationary Transfer Orbit";
+      }
+
+      &:after{
+        content: "37,500 km";
+      }
+    }
+
+    &#leo{
+      top: 18%;
+
+      &:before{
+        content: "Low Earth Orbit";
+      }
+
+      &:after{
+        content: "160 - 2,000 km";
+      }
+    }
+
+    &#karman{
+      top:26%;
+
+      &:before{
+        content: "K\e1rm\e1n Line";
+      }
+
+      &:after{
+        content: "100 km";
+      }
+    }
+  }
+}
+
+header {
+  align-items: center;
+  display: flex !important;
+  flex-direction: row;
+  select, input {
+    font-family: inherit;
+  }
+}
+
+header h2 {
+  flex-grow: 1;
+  color: #fff;
+}
+
+.scrim {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  opacity: 0;
+  z-index: 3;
+  transition: opacity 0.3s ease;
+}
+
+.scrim.visible {
+  display: block;
+  opacity: 1;
+}

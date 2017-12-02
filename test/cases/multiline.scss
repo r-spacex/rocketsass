@@ -1,0 +1,78 @@
+/*
+  compileDest = ./out/spacex-launch/spacex-launch.css,
+  style = compact,
+  relativePath = true
+*/
+
+@import "_ignored";
+
+:host {
+  align-content: flex-end;
+  align-items: flex-end;
+  box-sizing: border-box;
+  color: #444;
+  display: flex;
+  flex: 0 0 auto;
+  flex-wrap: wrap;
+  height: 100vh;
+  padding: 16px;
+  position: relative;
+  text-align: center;
+  width: 150px;
+}
+
+p{
+  white-space: normal;
+}
+
+#altitude{
+  background: rgba(red, 0.5);
+  height: 0;
+  margin: 0 auto;
+  margin-bottom: 8px;
+  order: 1;
+  width: 8px;
+  border-radius: 8px;
+  transition: height 1s;
+  transition-delay: 0.5s;
+}
+
+#mission{
+  bottom: 7vh;
+  height: 3.5vh;
+  order: 3;
+  width: 100%;
+}
+
+#launchDatetime{
+  height: 10vh;
+  order: 4;
+  width: 100%;
+
+  &[vehicle]:after{
+    border-radius: 50%;
+    content: "";
+    display: block;
+    height: 10px;
+    position: absolute;
+    left: 50%;
+    width: 10px;
+    transform: translateX(-50%) translateY(10px);
+  }
+
+  &[vehicle="falcon1"]:after{
+    background: $falcon-1;
+  }
+
+  &[vehicle="falcon9v1.0"]:after{
+    background: $falcon-9v1;
+  }
+
+  &[vehicle="falcon9v1.1"]:after{
+    background: $falcon-9v11;
+  }
+
+  &[vehicle="falcon9FT"]:after{
+    background: $falcon-9FT;
+  }
+}

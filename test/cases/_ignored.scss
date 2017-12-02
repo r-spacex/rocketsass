@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700');
+
+//Fonts
+$openSans: 'Open Sans', sans-serif;
+$system: BlinkMacSystemFont, -apple-system, 'Segoe UI', Roboto, sans-serif;
+//Colors
+$light-gray: #ccc;
+$background-gray: #f5f5f5;
+$spacex-blue: #3569a4;
+$twilight: #2c3e50;
+$success: #39aa56;
+$error: #db4545;
+
+$falcon-1: #446e88;
+$falcon-9v1: #e8c57c;
+$falcon-9v11: #f4a281;
+$falcon-9FT: #8c84a6;
+
+
+
+* {
+  font-family: $system;
+  font-size: 14px;
+}
+
+body {
+  background-color: $background-gray;
+}
+
+@mixin thin-border($location, $pattern, $color) {
+  border-#{$location}: 1px $pattern $color;
+  @media (min-resolution: 1.5dppx) {
+    border-#{$location}-width: 0.75px;
+  }
+  @media (min-resolution: 2dppx) {
+    border-#{$location}-width: 0.5px;
+  }
+}
