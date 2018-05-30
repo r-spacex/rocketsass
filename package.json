@@ -1,6 +1,6 @@
 {
   "name": "rocketsass",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A smart sass compiler",
   "main": "index.js",
   "bin": {
@@ -26,12 +26,17 @@
   "homepage": "https://github.com/r-spacex/rocketsass#readme",
   "dependencies": {
     "colors": "^1.1.2",
-    "commander": "^2.12.2"
+    "commander": "^2.12.2",
+    "find-up": "^2.1.0",
+    "read-yaml": "^1.1.0"
   },
   "devDependencies": {
     "eslint": "^4.12.1",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.8.0"
   },
-  "files": ["bin/", "index.js"]
+  "files": [
+    "bin/",
+    "index.js"
+  ]
 }
