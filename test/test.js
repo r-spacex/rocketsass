@@ -1,3 +1,4 @@
+/* eslint no-console: off */
 const rocketsass = require('../');
 const colors = require('colors');
 
