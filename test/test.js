@@ -2,7 +2,7 @@ const rocketsass = require('../');
 const colors = require('colors');
 
 try {
-  rocketsass.compile(`${__dirname.replace(/\\/g, '/')}/cases/`, {
+  rocketsass.compile([`${__dirname.replace(/\\/g, '/')}/cases/`], {
     ignorePrefix: '_',
     style: 'compact',
   });
