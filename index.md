@@ -1,25 +1,25 @@
-<a name="module_r-spacex/rocketsass"></a>
+<a name="module_rocketsass"></a>
 
-## r-spacex/rocketsass
+## rocketsass
 A smart sass compiler
 
 
-* [r-spacex/rocketsass](#module_r-spacex/rocketsass)
+* [rocketsass](#module_rocketsass)
     * _static_
-        * [.OutputStyle](#module_r-spacex/rocketsass.OutputStyle) : <code>enum</code>
-        * [.readConfig(filepath, callback)](#module_r-spacex/rocketsass.readConfig)
-        * [.getAllConfigs(path, files, callback)](#module_r-spacex/rocketsass.getAllConfigs) ⇒ <code>Array.&lt;object&gt;</code>
-        * [.compile(paths, options, logger)](#module_r-spacex/rocketsass.compile)
+        * [.OutputStyle](#module_rocketsass.OutputStyle) : <code>enum</code>
+        * [.readConfig(filepath, callback)](#module_rocketsass.readConfig)
+        * [.getAllConfigs(path, files, callback)](#module_rocketsass.getAllConfigs) ⇒ <code>Array.&lt;object&gt;</code>
+        * [.compile(paths, options, logger)](#module_rocketsass.compile)
     * _inner_
-        * [~configCallback](#module_r-spacex/rocketsass..configCallback) : <code>function</code>
-        * [~CompileOptions](#module_r-spacex/rocketsass..CompileOptions)
+        * [~configCallback](#module_rocketsass..configCallback) : <code>function</code>
+        * [~CompileOptions](#module_rocketsass..CompileOptions)
 
-<a name="module_r-spacex/rocketsass.OutputStyle"></a>
+<a name="module_rocketsass.OutputStyle"></a>
 
-### r-spacex/rocketsass.OutputStyle : <code>enum</code>
+### rocketsass.OutputStyle : <code>enum</code>
 Enum for Sass compilation output styles.
 
-**Kind**: static enum of [<code>r-spacex/rocketsass</code>](#module_r-spacex/rocketsass)  
+**Kind**: static enum of [<code>rocketsass</code>](#module_rocketsass)  
 **Read only**: true  
 **Properties**
 
@@ -30,24 +30,24 @@ Enum for Sass compilation output styles.
 | COMPACT | <code>OutputStyle</code> | <code>compact</code> | Sass's compact output style |
 | COMPRESSED | <code>OutputStyle</code> | <code>compressed</code> | Sass's compressed output style |
 
-<a name="module_r-spacex/rocketsass.readConfig"></a>
+<a name="module_rocketsass.readConfig"></a>
 
-### r-spacex/rocketsass.readConfig(filepath, callback)
+### rocketsass.readConfig(filepath, callback)
 Reads a configuration from the header of a CSS file.
 
-**Kind**: static method of [<code>r-spacex/rocketsass</code>](#module_r-spacex/rocketsass)  
+**Kind**: static method of [<code>rocketsass</code>](#module_rocketsass)  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | filepath | <code>string</code> | The path to the file to be read from. |
 | callback | <code>configCallback</code> | The callback that handles the read configuration. |
 
-<a name="module_r-spacex/rocketsass.getAllConfigs"></a>
+<a name="module_rocketsass.getAllConfigs"></a>
 
-### r-spacex/rocketsass.getAllConfigs(path, files, callback) ⇒ <code>Array.&lt;object&gt;</code>
+### rocketsass.getAllConfigs(path, files, callback) ⇒ <code>Array.&lt;object&gt;</code>
 Takes a list of files and reads configs from them
 
-**Kind**: static method of [<code>r-spacex/rocketsass</code>](#module_r-spacex/rocketsass)  
+**Kind**: static method of [<code>rocketsass</code>](#module_rocketsass)  
 **Returns**: <code>Array.&lt;object&gt;</code> - An array of all the configurations for each file.  
 
 | Param | Type | Description |
@@ -56,12 +56,12 @@ Takes a list of files and reads configs from them
 | files | <code>Array.&lt;string&gt;</code> | The list of file names to compile |
 | callback | <code>function</code> | Callback called with error and array of configs |
 
-<a name="module_r-spacex/rocketsass.compile"></a>
+<a name="module_rocketsass.compile"></a>
 
-### r-spacex/rocketsass.compile(paths, options, logger)
+### rocketsass.compile(paths, options, logger)
 Compiles sass files from a directory to targets using config headers
 
-**Kind**: static method of [<code>r-spacex/rocketsass</code>](#module_r-spacex/rocketsass)  
+**Kind**: static method of [<code>rocketsass</code>](#module_rocketsass)  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -69,20 +69,20 @@ Compiles sass files from a directory to targets using config headers
 | options | <code>CompileOptions</code> | Compilation options |
 | logger | <code>Console</code> | The output to log items, e.g. `console` |
 
-<a name="module_r-spacex/rocketsass..configCallback"></a>
+<a name="module_rocketsass..configCallback"></a>
 
-### r-spacex/rocketsass~configCallback : <code>function</code>
-**Kind**: inner typedef of [<code>r-spacex/rocketsass</code>](#module_r-spacex/rocketsass)  
+### rocketsass~configCallback : <code>function</code>
+**Kind**: inner typedef of [<code>rocketsass</code>](#module_rocketsass)  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | err | <code>Error</code> | The error thrown, if any. |
 | config | <code>Object</code> | The config object if read succesfully |
 
-<a name="module_r-spacex/rocketsass..CompileOptions"></a>
+<a name="module_rocketsass..CompileOptions"></a>
 
-### r-spacex/rocketsass~CompileOptions
-**Kind**: inner typedef of [<code>r-spacex/rocketsass</code>](#module_r-spacex/rocketsass)  
+### rocketsass~CompileOptions
+**Kind**: inner typedef of [<code>rocketsass</code>](#module_rocketsass)  
 **Properties**
 
 | Name | Type | Description |
