@@ -4,8 +4,16 @@ node_js:
 cache:
   directories:
   - node_modules
+after_success: npm run docs
 deploy:
-  provider: npm
+- provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN
+  keep-history: true
+  on:
+    branch: master
+    repo: r-spacex/rocketsass
+- provider: npm
   email: richikscdev@outlook.com
   api_key:
     secure: KwWEL+ts85WCw1Wa7024zlMZhItqUQha2TAFYqYjg57ae6QTIIksKtO/6eZH7fHzHG2xzmaO2atxbz+Ri9t1ynwcdeEatY45r4arql64/frCLqFNmNBCpgR2iSoYtCTfEXCkbCfQXbe/MrMdu5TcmDpNxar1xiMG5nA64Qp879Nif6Bt/15ACd5D6+Pi6oXkMmxg+4+WAYrZo9epbPPSA0Dk3kp40JlGtRDWqUmE8thyZ4cPDQwaavt+GHuiHQdIGAha6rHwImSspgN5BpDY1Yiyty/nQxhNj6P19Cu1xf227CYjrejc1tKW6yJOzbeQulav/NMWZDvTHmxGqrxQsfwZiEEtT/eQik0QJKVAOL90yinWTF/899ZZfx+EerOeRgwZ2xylnUtMlJLhyc4LFvAPNBvNfh4Fg9VLGWYRKja8NP6h52LEjNeaFFgiEwxNOD9cFNOWNSqwqYe2N8RU+OtDMcPT8CIeAvU54z7afEFmgHjB52iFFVExs3M+u5j4KcGYonS9unjTvwK5kn4Lo/TP1n8o28duRl9Txwaz4ZMBx6fLrs/E3D4aq/h//efUQxOn0AOBl2+/xBJO+g+yoW3epui6SjEbNHdJ3EPgYy6j4ucL8zOpKbXIe+APWI12Iajv9twGIKevRwJJAVIlWj6FSkbdHSD3ivcxuq3C6pk=
