@@ -36,15 +36,17 @@ You can also add options separated by commas:
 /* compileDest = ./out/css/style.css, style = compressed */
 ```
 
-**It must all be on the first line.**
+**It must start on the first line.**
 
 Then, simply run `rocketsass` from the command line:
 
 ```bash
 $ rocketsass [path]
+$ rocketsass css/scss                   # Compile Sass from css/scss
+$ rocketsass module1/scss module2/scss  # Compile Sass from both module1/scss and module2/scss
 ```
 
-where `[path]` is the path to your sass directory, eg. `./scss/`. The default path is `./css/scss/`.
+where `[path]` is the path or a list of paths to your sass directory, eg. `./scss/`. The default path is `./css/scss/`.
 
 ### Usage from scripts
 
@@ -53,17 +55,19 @@ where `[path]` is the path to your sass directory, eg. `./scss/`. The default pa
 const rocketsass = require('rocketsass');
 
 // Compile all sass files in a directory
-rocketsass.compile('./scss/', {
+rocketsass.compile(['./scss/'], {
   // Ignore files starting with this string, optional
   ignore: '_',
   // CSS output style (see below), optional
-  style: 'nested'
-});
+  style: 'nested',
+  // Base directory for relative URLs, optional
+  projectDir: 'dist/'
+}, console); // Logger - where to log output to, optional.
 
 ```
 
 ## Options
-By default, RocketSass ignores Sass/SCSS files starting with '\_'. You can override that by passing the option `-i` or `--include`.
+By default, RocketSass ignores Sass/SCSS files starting with '\_'. You can override that by passing the option `-i` or `--ignore`.
 
 ```bash
 $ rocketsass [path] -i ''           # Include all files
@@ -72,3 +76,10 @@ $ rocketsass [path] -i '.'          # Ignore dotfiles
 ```
 
 Passing `rocketsass` the option `-s` or `--style` can also set the output style of the CSS which takes one of the standard Sass output styles. This value overridden by the style set in a file's header. By default, the style is `nested`.
+
+Passing  `rocketsass` the option `-q` or `--silent` will mute all output, including errors.
+
+```bash
+$ rocketsass [path] -q              # No output
+$ rocketsass [path]
+```
