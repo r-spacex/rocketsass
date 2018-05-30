@@ -11,7 +11,7 @@ function relativePath(path) {
 
 /**
  * A smart sass compiler
- * @module r-spacex/rocketsass
+ * @module rocketsass
  */
 module.exports = {
   /**
