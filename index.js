@@ -1,7 +1,7 @@
 const fs = require('fs');
 const eol = require('os').EOL;
 const syspath = require('path');
-const { exec } = require('child_process');
+const sass = require('node-sass');
 const util = require('./src/util');
 require('colors');
 
@@ -81,6 +81,7 @@ module.exports = {
    * @typedef CompileOptions
    * @property {string} ignorePrefix - If the filename starts with this, do not compile.
    * @property {OutputStyle} style - The default style for the CSS output
+   * @property {string} projectDir - The project root directory
    */
 
   /**
@@ -102,7 +103,7 @@ module.exports = {
         });
 
         this.getAllConfigs(path, fileList, (configs) => {
-          if (logCondition) logger.log(`Compiling sass with ${options.style.green} style...`);
+          if (logCondition) logger.log(`Compiling Sass from ${path} with ${options.style.green} style...`);
           configs.forEach((config) => {
             // Skip files without compileDest
             if (typeof config.compileDest === 'undefined') {
@@ -110,17 +111,35 @@ module.exports = {
               return;
             }
 
-            let destination = config.compileDest;
+            let destination =
+              (options.projectDir != null ?
+                relativePath(syspath.resolve(options.projectDir, config.compileDest))
+                : config.compileDest);
             if (config.relativePath) {
               destination = syspath.resolve(syspath.dirname(config.target), config.compileDest);
             }
 
             const outputStyle = config.style || defaultStyle;
-            exec(`sass ${config.target} ${destination} --style ${outputStyle}`, (execErr) => {
-              if (execErr) throw execErr;
+            sass.render({
+              file: config.target,
+              outFile: destination,
+              outputStyle,
+              sourceMap: true,
+            }, (sassErr, result) => {
+              if (sassErr) throw sassErr;
               const styleClause = (outputStyle === defaultStyle) ? '' : ` with ${outputStyle} style`.green;
               if (logCondition) {
                 logger.log(`${util.fixedLengthString(relativePath(config.target), 40)} ${'->'.cyan}  ${relativePath(destination)}${styleClause}`);
+              }
+              if (!sassErr) {
+                fs.writeFile(destination, result.css, (writeErr) => {
+                  if (writeErr) {
+                    if (logCondition) {
+                      logger.error(`Write failed to ${destination}`, writeErr);
+                    }
+                    throw writeErr;
+                  }
+                });
               }
             });
           });

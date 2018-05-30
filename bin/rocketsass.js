@@ -10,18 +10,18 @@ const yaml = require('read-yaml');
 
 let pathValue = ['./css/scss/'];
 let rcOptions = {};
+let projectDir;
 
 const rcPath = findUp.sync('.rocketsass.yml');
 if (rcPath != null) {
   rcOptions = yaml.sync(rcPath);
-  console.log(pathValue);
   pathValue = rcOptions.paths.map((x) => {
     if (syspath.isAbsolute(x)) {
       return x;
     }
-    return syspath.resolve(syspath.dirname(rcPath), x);
+    return syspath.relative(process.cwd(), syspath.resolve(syspath.dirname(rcPath), x));
   });
-  console.log(pathValue);
+  projectDir = syspath.dirname(rcPath);
 }
 
 program
@@ -41,6 +41,7 @@ try {
     ignorePrefix: program.ignore || rcOptions.ignore || '_',
     style: program.style || rcOptions.style || rocketsass.OutputStyle.NESTED,
     silent: program.silent || false,
+    projectDir,
   }, console);
 } catch (error) {
   console.error(colors.red(error));
