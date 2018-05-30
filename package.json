@@ -1,6 +1,6 @@
 {
   "name": "rocketsass",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A smart sass compiler",
   "main": "index.js",
   "bin": {
