@@ -1,5 +1,5 @@
 {
-  "name": "rocketsass",
+  "name": "@r-spacex/rocketsass",
   "version": "1.0.3",
   "description": "A smart sass compiler",
   "main": "index.js",
