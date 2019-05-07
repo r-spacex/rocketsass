@@ -1,5 +1,5 @@
 # RocketSass
-[![npm](https://img.shields.io/npm/v/%40r-spacex/rocketsass.svg)](https://www.npmjs.com/package/rocketsass)
+[![npm](https://img.shields.io/npm/v/%40r-spacex/rocketsass.svg)](https://www.npmjs.com/package/@r-spacex/rocketsass)
 [![Build Status](https://travis-ci.org/r-spacex/rocketsass.svg?branch=master)](https://travis-ci.org/r-spacex/rocketsass)
 [![Inline docs](http://inch-ci.org/github/r-spacex/rocketsass.svg?branch=master)](http://inch-ci.org/github/r-spacex/rocketsass)
 
